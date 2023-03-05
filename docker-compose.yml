@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  mongo:
+    image: 'mongo:6.0.4'
+    container_name: 'hm-gallery-mongo-container'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+    volumes:
+      - ./mongo-volume:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - hm-gallery-network
+networks:
+  hm-gallery-network:
+    driver: bridge
